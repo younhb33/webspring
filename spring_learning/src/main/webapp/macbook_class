@@ -1,0 +1,31 @@
+create table macbook_class(
+midx int unsigned auto_increment,
+class_part varchar(100) not null,
+class_cate varchar(30) not null,
+class_name varchar(200) not null,
+class_day int not null default '1',
+class_price int not null,
+class_sales int not null,
+class_info text null,
+class_teacher varchar(100) null,
+class_object text null,
+class_use enum('Y','N') not null default 'N',
+today timestamp not null default current_timestamp,
+primary key(midx)
+)
+
+create table macbook_class(
+midx int unsigned auto_increment comment "자동증가값", /*자동증가값*/
+class_part varchar(100) not null comment "과정구분", 	/*과정구분*/
+class_cate varchar(30) not null comment "과정카테고리",	/*과정카테고리*/
+class_name varchar(200) not null comment "과정개설명",	/*과정명*/
+class_day int not null default '1' comment "학습일수",		/*학습일수*/
+class_price int not null comment "정가",		/*정가*/
+class_sales int not null comment "수강료",	/*수강료*/
+class_info text null comment "과정소개",		/*과정소개*/
+class_teacher varchar(100) null comment "강사명",		/*강사명*/
+class_object text null comment "학습목표",		/*학습목표*/
+class_use enum('Y','N') not null default 'N' comment "개설여부",	/*개설여부*/
+today timestamp not null default current_timestamp comment "오늘날짜",		/*오늘날짜*/
+primary key(midx)
+)

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+spring + spring-boot 에서 beans 태그 사용함 
+1. beans를 사용하여 beans, bean 태그를 사용하여 Controller 및 환경설정 
+2. context : Spring 프레임워크의 bean에 대한 종속성을 관리하는 엔진 (package 그룹단위별로 관리)
+3. mvc : Spring 프레임 워크의 Model, View, Controller 형태의 구성 
+
+beans : bean태그를 활성화 하는 부모태그
+ -->
+<beans
+   xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:mvc="http://www.springframework.org/schema/mvc"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd                   
+                  http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd                   
+                  http://www.springframework.org/schema/mvc ttps://www.springframework.org/schema/mvc/spring-mvc.xsd">
+		<!-- 리소스 세팅  
+		<resource mapping="/resources/**" location="/resources/"/>
+		 -->
+	<!-- bean : 가상의 컨테이너 이며, id: 가상의 주소, class: 자바 경로 -->
+	<!-- 
+	아래 두 줄은 같은 코드 
+	<bean id="" class=""></bean>	//이거는 태그와 태그 사이에 다른 태그(옵션)를 넣을수있다는 점이 다름 
+	<bean id="" class=""/>			//태그 안에 아무것도 안넣겠다는 뜻 
+	
+	<bean id="/test.do" class="spring_learning.test"></bean>
+	<bean id="/abc.do" class=""/>
+	 -->
+	
+</beans>
