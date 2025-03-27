@@ -1,3 +1,17 @@
+create table macbook_member(
+midx int unsigned auto_increment,
+mid varchar(100) not null,
+mname varchar(100) not null,
+memail varchar(100) not null,
+primary key(midx),
+unique (mid)
+);
+insert into macbook_member value('0','hong','홍길동','hong@nate.com');
+insert into macbook_member value('0','gildong','홍길동','gil@naver.com');
+insert into macbook_member value('0','kim','김유신','kim@nate.com');
+insert into macbook_member value('0','han','한성복','han@gmail.com');
+
+
 create table macbook_class(
 midx int unsigned auto_increment,
 class_part varchar(100) not null,
@@ -29,3 +43,29 @@ class_use enum('Y','N') not null default 'N' comment "개설여부",	/*개설여
 today timestamp not null default current_timestamp comment "오늘날짜",		/*오늘날짜*/
 primary key(midx)
 )
+
+
+//배너 리스트
+create table macbook_banner(
+		bidx int unsigned auto_increment,
+		bname varchar(100) not null,
+		file_ori text null,
+		file_new text null,
+		file_url text null,
+		bdate timestamp not null default current_timestamp,
+		primary key(bidx)
+);
+select * from macbook_banner;		
+//상담신청 내역
+create table macbook_cms(
+		cidx int unsigned auto_increment,
+		csubject varchar(100) not null,
+		cuser char(50) not null,
+		cate set('cms1','cms2','cms3','cms4','cms5') not null,
+		cdate timestamp not null default current_timestamp,
+		primary key(cidx)
+);
+select * from macbook_cms;
+insert into macbook_cms values('0','테스트','홍길동','cms2,cms5', now());
+		
+	

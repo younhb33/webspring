@@ -15,19 +15,45 @@ select * from mrp where mid='abc';
 =>이거랑 같은 거임
 select * from ${mrp} where mid=#{abc};
  -->
+ 
+ 
 <insert id="macbook_insert">
 insert into macbook_class (midx,class_part,class_cate,class_name,class_day,class_price,class_sales,class_info,class_teacher,class_object,class_use,today)
 values ('0',#{class_part},#{class_cate},#{class_name},#{class_day},#{class_price},#{class_sales},#{class_info},#{class_teacher},#{class_object},#{class_use},now())
 </insert>
-<select id="macbook_select">
-select * from macbook_class
+
+<!-- 
+resultType : config.xml에서 세팅된 alias를 이용하여 Model DTO에 이관 
+-->
+<select id="macbook_select" resultType="macbookdto">
+select * from macbook_class order by midx desc
 </select>
-<delete id="macbook_delete">
-delete from macbook_class
-</delete> 
+
+ 
+ <!-- 과정하나의 데이터 -->
+ <!-- parameterType : 매개변수 자료형 -->
+ <!-- id로 받은 데이터 저장하는게 resultType -->
+ <select id="macbook_one" resultType="macbookdto" parameterType="String">
+ select * from macbook_class where midx=#{midx}
+ </select>
+ 
+ <!-- 
+ resultType은 select외에는 사용 안 됨
+  -->
+ 
+ <!-- 과정 데이터 수정 -->
+ 
+<update id="macbook_update">
+update macbook_class set class_part=#{class_part}, class_cate=#{class_cate}, class_name=#{class_name},
+class_day=#{class_day}, class_price=#{class_price}, class_sales=#{class_sales}, class_info=#{class_info},
+class_teacher=#{class_teacher}, class_object=#{class_object}, class_use=#{class_use} where midx = #{midx}
+ </update>
  
  
- 
+<delete id="macbook_delete" parameterType="int">
+delete from macbook_class where midx=#{midx}
+</delete>
+
  
  
 </mapper>
