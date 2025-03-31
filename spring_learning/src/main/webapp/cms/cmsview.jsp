@@ -15,11 +15,11 @@
 <!-- 
 disabled : 해당 내용을 더이상 수정 및 변경을 못하게 하는 속성 (checkbox, radio, input)
 단점 : 예를 들어서 name속성 있어서 Back-end로 값을 전송할 때 disabled처리시 값을 전송하지 않음
-9
 contains : 해당 단어가 포함되어 있는지를 확인하는 함수입니다.
 <cr:if test="${fn:contains(cate, 'cms1')}">
 => cms1이라는 네임이 정확하게 있는지 확인
  -->
+ 
 <input type="checkbox"  value="cms1" <cr:if test="${fn:contains(cate, 'cms1')}"> checked </cr:if> disabled> 심리상담 
 <input type="checkbox"  value="cms2" <cr:if test="${fn:contains(cate, 'cms2')}"> checked </cr:if> disabled> 학교생활
 <input type="checkbox"  value="cms3" <cr:if test="${fn:contains(cate, 'cms3')}"> checked </cr:if> disabled> 가정

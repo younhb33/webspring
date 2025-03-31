@@ -4,12 +4,34 @@
 
 <mapper namespace="macbook_user">
 
+
+<!-- 해당 배너 고유값으로 데이터 삭제처리 -->
+<delete id="banner_del">
+delete from macbook_banner where bidx=#{no}
+</delete>
+
+
+
+<!-- 배너에 대한 전체 데이터 갯수 쿼리문 -->
+<select id="banner_total" resultType="int">
+select count(*) as total from macbook_banner
+</select>
+
+<!-- select * from macbook_banner order by bidx desc limit 0,#{page_ea} -->
 <!-- 배너 전체 리스트 -->
-<select id="banner_all" resultType="banner_DTO">
-select * from macbook_banner order by bidx desc
+<select id="banner_all" resultType="banner_DTO" parameterType="Map">
+select * from macbook_banner order by bidx desc limit #{spage},#{epage}
 </select>
 
 
+<select id="banner_search" resultType="banner_DTO" parameterType="String">
+select * from macbook_banner where bname like concat('%',#{search},'%') order by bidx desc
+</select>
+<!-- 
+mysql + mariadb : concat ('%',#{search},'%') 앞뒤 검토
+oracle : like '%' || #{search} || '%'  앞뒤 검토
+mssql : like '%' + #{search} + '%'  앞뒤 검토
+ -->
 <!-- banner 등록 테이블 -->
 <insert id="banner_new">
 insert into macbook_banner(bidx, bname, file_ori, file_new,file_url,bdate) 
